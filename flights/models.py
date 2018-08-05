@@ -28,9 +28,14 @@ class Flight(models.Model):
 
 	@property
 	def has_departed(self):
-		if self.departure > current_time.now():
+		if self.departure < current_time.now():
 			return True
 		return False
 
 	def get_absolute_url(self):
 		return reverse("flight_detail", args=[str(self.id)])
+
+	@property
+	def get_departure_time(self):
+		departure_in = self.departure - current_time
+		return departure_in.strftime("%H:%M")
