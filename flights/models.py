@@ -43,4 +43,4 @@ class Flight(models.Model):
 	@property
 	def get_arrival_time(self):
 		arrival_in = self.departure + self.duration
-		return arrival.strftime("%H:%M %p")
+		return arrival_in.strftime("%H:%M %p")
