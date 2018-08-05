@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Get Notified
+{% endblock %}
+
+{% block content %}
+	
+	<!--Section: Contact v.2-->
+	<section class="section">
+
+	    <!--Section heading-->
+	    <h2 class="h1-responsive font-weight-bold text-center my-5">Get Notified</h2>
+	    <!--Section description-->
+	    <p class="text-center w-responsive mx-auto mb-5">The flight you are looking for has been departed, we can notify you when the flight is available.</p>
+
+	    <div class="row">
+
+	    	<div class="col-md-3"></div>
+
+	        <!--Grid column-->
+	        <div class="col-md-6 mb-md-0 mb-5">
+	            <form id="contact-form" name="contact-form" action="{% url 'contact_form' %}" method="POST">
+
+	            	{% csrf_token %}
+
+	                <!--Grid row-->
+	                <div class="row">
+
+	                    <!--Grid column-->
+	                    <div class="col-md-6">
+	                        <div class="md-form mb-0">
+	                            <input type="text" id="name" name="name" class="form-control">
+	                            <label for="name" class="">Your name</label>
+	                        </div>
+	                    </div>
+	                    <!--Grid column-->
+
+	                    <!--Grid column-->
+	                    <div class="col-md-6">
+	                        <div class="md-form mb-0">
+	                            <input type="text" id="email" name="email" class="form-control">
+	                            <label for="email" class="">Your email</label>
+	                        </div>
+	                    </div>
+	                    <!--Grid column-->
+
+	                </div>
+	                <!--Grid row-->
+
+	            </form>
+
+	            <div class="text-center text-md-left">
+	                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+	            </div>
+	            <div class="status"></div>
+	        </div>
+	        <!--Grid column-->
+
+	    	<div class="col-md-3"></div>
+
+
+	    </div>
+
+	</section>
+	<!--Section: Contact v.2-->
+
+{% endblock %}

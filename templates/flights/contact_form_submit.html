@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Contact Form Submitted
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+	<h3 class="green-text">Thanks {{ contact_name }}!</h3>
+	<h5 class="grey-text">You will be notified at {{ contact_email }}</h5>
+</div>
+
+{% endblock %}
