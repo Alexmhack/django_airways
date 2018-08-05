@@ -6,15 +6,16 @@
 
 {% block content %}
 	<!-- SECTION: FLIGHTS -->
-	<section class="container">
+	<section class="container mt-5">
 		<ul>
 			{% for flight in flights_list %}
 			<li>
 				<p>
-					From: {{ flight.origin }}
-					To: {{ flight.destination }}
+					<a href="{% url 'flight_detail' flight.pk %}">
+						From: {{ flight.origin }}
+						To: {{ flight.destination }}
+					</a>
 					Duration: {{ flight.duration }}
-					Status: {{ flight.status }}
 				</p>
 			</li>
 			{% endfor %}
