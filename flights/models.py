@@ -1,8 +1,13 @@
 from django.db import models
+from datetime import datetime
+
+current_time = datetime.now()
 
 class Flight(models.Model):
 	origin = models.CharField(max_length=50)
 	destination = models.CharField(max_length=50)
+	price = models.DecimalField(decimal_places=2, max_digits=10000)
+	departure = models.DateTimeField()
 	duration = models.DurationField(
 		help_text="Duration for flight in hh:mm:ss format"
 	)
