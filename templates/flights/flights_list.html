@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+	All Flights
+{% endblock title %}
+
+{% block content %}
+	<!-- SECTION: FLIGHTS -->
+	<section class="container">
+		<ul>
+			{% for flight in flights_list %}
+			<li>
+				<p>
+					From: {{ flight.origin }}
+					To: {{ flight.destination }}
+					Duration: {{ flight.duration }}
+					Status: {{ flight.status }}
+				</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<!-- /SECTION: FLIGHTS -->
+{% endblock content %}
