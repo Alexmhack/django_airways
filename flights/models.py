@@ -36,6 +36,10 @@ class Flight(models.Model):
 		return reverse("flight_detail", args=[str(self.id)])
 
 	@property
+	def departure_format(self):
+		return self.departure.strftime("On %A %d %B, %y at %H:%M")
+
+	@property
 	def get_departure_time(self):
 		departure_in = self.departure - current_time
 		return self.departure.time().strftime("%H:%M %p")
@@ -43,4 +47,4 @@ class Flight(models.Model):
 	@property
 	def get_arrival_time(self):
 		arrival_in = self.departure + self.duration
-		return arrival_in.strftime("%H:%M %p")
+		return arrival_in.strftime("On %A %d %B, %y at %H:%M %p")
