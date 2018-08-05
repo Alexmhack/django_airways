@@ -23,3 +23,11 @@ def flight_detail(request, id):
 	}
 
 	return render(request, "flights/flight_detail.html", context)
+
+
+def search_results_view(request):
+	query = request.GET['search_query']
+	context = {
+		"query": query
+	}
+	return render(request, "flights/search_results.html", context)
