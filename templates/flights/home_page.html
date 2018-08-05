@@ -14,17 +14,23 @@
 		<!--Panel-->
 		<div class="row">
 			{% for flight in latest_flights %}
+
 			<div class="col-md-4">
-			<a href="{% url 'flight_detail' flight.pk %}">
-				<div class="card border-success mb-5" style="max-width: 18rem;">
-				    <div class="card-header">₹ {{ flight.price }}</div>
-				    <div class="card-body text-success">
-				        	<h5 class="card-title">{{ flight.origin }} to {{ flight.destination }}</h5>
-				        <p class="card-text">Flight Duration: {{ flight.duration }}</p>
-				    </div>
+				{% if flight.has_departed %}
+		        <a href="{% url 'contact_form' %}" class="red-text">
+				{% else %}
+				<a href="{% url 'flight_detail' flight.pk %}" class="green-text">
+		    	{% endif %}
+					<div class="card border-success mb-5" style="max-width: 18rem;">
+					    <div class="card-header">₹ {{ flight.price }}</div>
+					    <div class="card-body text-success">
+					        	<h5 class="card-title">{{ flight.origin }} to {{ flight.destination }}</h5>
+					        <p class="card-text">Flight Duration: {{ flight.duration }}</p>
+					    </div>
+					</div>
+				</a>
 				</div>
-			</a>
-			</div>
+
 			{% endfor %}
 		</div>
 		<!--/.Panel-->
