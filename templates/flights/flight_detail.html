@@ -32,17 +32,17 @@
 			<!-- COL ENDS -->
 
 			<!-- ROW STARTS -->
-			<div class="row container">
+			<div class="row container mt-3">
 
 				<!-- COL STARTS -->
-				<div class="col-md-4 text-left">
-					<h4>Departure: <span class="blue-text">{{ flight.duration }}</span></h4>
+				<div class="col-md-12 mb-3 text-left">
+					<h4>Departure from {{ flight.origin }}: <span class="blue-text">{{ flight.departure_format }}</span></h4>
 				</div>
 				<!-- COL ENDS -->
 
 				<!-- COL STARTS -->
-				<div class="col-md-4 text-left">
-					<h4>Arrival: <span class="blue-text">{{ flight.duration }}</span></h4>
+				<div class="col-md-12 text-left">
+					<h4>Estimated arrival in {{ flight.destination }} <span class="red-text">{{ flight.get_arrival_time }}</span></h4>
 				</div>
 				<!-- COL ENDS -->
 
