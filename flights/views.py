@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Flight
+
+def flights_list(request):
+	flights_list = Flight.objects.all()
+	context = {'flights_list': flights_list}
+	return render(request, 'flights_list.html', context)
