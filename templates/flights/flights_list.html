@@ -18,7 +18,7 @@
 		            {% if flight.has_departed %}
 		            	<a href="{% url 'contact_form' %}" class="btn btn-danger">Details</a>
 		            {% else %}
-		            	<a href="{% url 'flight_detail' flight.pk %}" class="btn btn-success">
+		            	<a href="{{ flight.get_absolute_url }}" class="btn btn-success">
 		            	Details</a>
 		            {% endif %}
 		        </div>
