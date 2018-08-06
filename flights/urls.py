@@ -25,3 +25,8 @@ urlpatterns += [
 	path('flight/<int:pk>/update/', FlightUpdateView.as_view(), name="flight-update"),
 	path('flight/<int:pk>/delete/', FlightDeleteView.as_view(), name="flight-delete"),
 ]
+
+urlpatterns += [
+	path('flyways/flights/list', AllFlightView.as_view(), name="admin-flights"),
+	path("flyways/flights/<int:pk>/detail/", EachFlightDetail.as_view(), name="admin-flight-details"),
+]
