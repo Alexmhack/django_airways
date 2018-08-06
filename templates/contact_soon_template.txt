@@ -1,0 +1,5 @@
+Thanks for contacting us!
+{% if content %}
+One of our team member will soon contact to you.
+{% endif %}
+You will be notified as soon as the flight {{ flight_detail }} is available.
