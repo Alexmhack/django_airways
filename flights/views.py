@@ -111,3 +111,13 @@ class FlightUpdateView(LoginRequiredMixin, UpdateView):
 class FlightDeleteView(LoginRequiredMixin, DeleteView):
 	model = Flight
 	success_url = reverse_lazy('flights_list')
+
+
+# admin accessible views only
+class AllFlightView(LoginRequiredMixin, generic.ListView):
+	model = Flight
+	template_name = "flights/all_flights_list.html"
+
+class EachFlightDetail(LoginRequiredMixin, generic.DetialView):
+	model = Flight
+	template_name = "fligts/each_flight_detail.html"
