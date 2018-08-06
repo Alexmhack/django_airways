@@ -4,6 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
 from .models import Passenger
 
@@ -36,3 +38,18 @@ class PassengerUpdateView(LoginRequiredMixin, UpdateView):
 class PassengerDeleteView(LoginRequiredMixin, DeleteView):
 	model = Passenger
 	success_url = reverse_lazy("passenger-list")
+
+
+def signup_view(request):
+	if request.method == "POST":
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=raw_password)
+			login(request, user)
+			return redirect("admin-flights")
+	else:
+		form = UserCreationForm()
+	return render(request, "registration/signup.html", {'form': form})

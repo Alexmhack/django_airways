@@ -6,6 +6,7 @@ from .views import (
 	PassengerCreateView,
 	PassengerDeleteView,
 	PassengerUpdateView,
+	signup_view,
 )
 
 urlpatterns = [
@@ -14,4 +15,8 @@ urlpatterns = [
 	path('create/', PassengerCreateView.as_view(), name="passenger-create"),
 	path('delete/<int:pk>', PassengerDeleteView.as_view(), name="passenger-delete"),
 	path('<int:pk>/update/', PassengerUpdateView.as_view(), name="passenger-update"),
+]
+
+urlpatterns += [
+	path('signup/', signup_view, name="signup"),
 ]
