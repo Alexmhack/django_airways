@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Delete Flight
+{% endblock %}
+
+{% block content %}
+
+	<div class="container mt-5 mb-4 text-center">
+		<h1 class="red-text mb-4">Delete Flight</h1>
+		<p class="mb-4">Are you sure you want to delete the flight: <span class="text-danger">{{ flight }}</span> ?</p>
+		<p class="text-info mb-4">The action is permanent</p>
+		<form class="mb-4" action="" method="post" accept-charset="utf-8">
+			{% csrf_token %}
+			<button type="submit" class="btn btn-danger">Confirm</button>
+		</form>
+	</div>
+
+{% endblock %}
