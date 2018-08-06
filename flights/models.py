@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime, timedelta
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 current_time = datetime.now()
 
@@ -12,6 +13,7 @@ class Flight(models.Model):
 	duration = models.DurationField(
 		help_text="Duration for flight in hh:mm:ss format"
 	)
+	passenger = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 	FLIGHT_STATUS = (
 		('m', 'Maintenance'),
