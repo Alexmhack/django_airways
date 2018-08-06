@@ -15,12 +15,8 @@
 		            <h5 class="card-title">₹ {{ flight.price }}</h5>
 		            <p class="card-text">Cheapest flight from {{ flight.origin }} to {{ flight.destination }}</p>
 
-		            {% if flight.has_departed %}
-		            	<a href="{% url 'contact_form' %}" class="btn btn-danger">Details</a>
-		            {% else %}
-		            	<a href="{{ flight.get_absolute_url }}" class="btn btn-success">
-		            	Details</a>
-		            {% endif %}
+		            <a href="{% url 'admin-flight-details' flight.pk %}" class="btn {% if flight.has_departed %}btn-danger{% else %}btn-success{% endif %}">Details</a>
+
 		        </div>
 		        <div class="card-footer">
 		            <small class="text-muted">
