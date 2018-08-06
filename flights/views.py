@@ -118,6 +118,12 @@ class AllFlightView(LoginRequiredMixin, generic.ListView):
 	model = Flight
 	template_name = "flights/all_flights_list.html"
 
-class EachFlightDetail(LoginRequiredMixin, generic.DetialView):
+
+class EachFlightDetail(LoginRequiredMixin, generic.DetailView):
 	model = Flight
-	template_name = "fligts/each_flight_detail.html"
+	template_name = "flights/each_flight_detail.html"
+
+	def get_context_data(self, **kwargs):
+		context = super(EachFlightDetail, self).get_context_data(**kwargs)
+		context['flight_detail_view'] = "True"
+		return context
