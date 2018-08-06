@@ -105,3 +105,6 @@ venv.bak/
 
 # flights migrations folder
 flights/migrations
+
+# passengers app migrations folder
+passengers/migrations
