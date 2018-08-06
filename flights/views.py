@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 from django.template.loader import get_template
 
 from .models import Flight
-from .forms import ContactForm, NotifyForm
+from .forms import ContactForm
 
 from datetime import datetime
 
