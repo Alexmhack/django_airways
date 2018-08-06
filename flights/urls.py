@@ -8,7 +8,9 @@ from .views import (
 	search_results_view,
 	contact_view,
 	FlightCreateView,
-	FlightDeleteView
+	FlightDeleteView,
+	AllFlightView,
+	EachFlightDetail,
 )
 
 urlpatterns = [
