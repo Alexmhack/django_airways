@@ -43,7 +43,7 @@ def search_results_view(request):
 		"query": query
 	}
 	return render(request, "flights/search_results.html", context)
-	
+
 
 def contact_view(request):
 	contact_form = ContactForm
@@ -74,7 +74,7 @@ def contact_view(request):
 			)
 
 			email.send()
-			return render(request, 'contact_confirm.html')
+			return render(request, 'contact_confirm.html', context)
 
 	return render(request, 'contact_form.html', {'contact_form': contact_form})
 
