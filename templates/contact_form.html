@@ -5,84 +5,88 @@
 {% endblock title %}
 
 {% block content %}
-	<!-- SECTION: CONTACT -->
-        <section id="contact">
 
-            <!-- HEADING -->
-            <h2 class="font-weight-bold text-cetner mb-5">Contact us</h2>
+    <!--Section: Contact v.2-->
+    <section class="section container">
 
-            <!-- ROW STARTS -->
-            <dv class="row">
-                
-                <!-- COL STARTS -->
-                <div class="col-lg-5 col-md-12">
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-5">Contact us</h2>
+        <!--Section description-->
+        <h5 class="text-center w-responsive mx-auto mb-5">The flight you are looking for is not available right now. We can notify you if the flight is available. Leave a message and we will contact you very soon.</h5>
 
-                      <!-- Form contact -->
-                      <form class="p-5" method="post" action="" role="form">
-                        {% csrf_token %}
-                        <div class="md-form form-sm"> <i class="fa fa-user prefix grey-text"></i>
-                          
-                          <label for="form3">{{ contact_form.contact_name }}</label>
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-9 mb-md-0 mb-5">
+                <form id="contact-form" name="contact-form" action="" method="POST">
+                    {% csrf_token %}
+
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <label for="email" class="">Your name</label>
+                            <div class="md-form mb-0">
+                                {{ contact_form.contact_name }}
+                            </div>
                         </div>
-                        <div class="md-form form-sm"> <i class="fa fa-envelope prefix grey-text"></i>
-                          
-                          <label for="form2">{{ contact_form.contact_email }}</label>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <label for="email" class="">Your email</label>
+                            <div class="md-form mb-0">
+                                {{ contact_form.contact_email }}
+                            </div>
                         </div>
-                        <div class="md-form form-sm"> <i class="fa fa-pencil prefix grey-text"></i>
-                          
-                          <label for="form8">{{ contact_form.content }}</label>
-                        </div>
-                        <div class="text-center mt-4">
-                          <button class="btn btn-primary">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
-                        </div>
-                      </form>
-                      <!-- Form contact -->
-
-                </div>
-                <!-- COL ENDS -->
-
-                <!-- COL STARTS -->
-                <div class="col-lg-7 col-md-12">
-
-                    <!-- ROW STARTS -->
-                    <div class="row text-center">
-
-                        <!-- COL STARTS -->
-                        <div class="col-lg-4 col-md-12 mb-3">
-
-                            <p><i class="fa fa-map fa-1x mr-2 grey-text"></i>Mumbai, Maharashtra 400047</p>
-
-                        </div>
-                        <!-- COL ENDS -->
-
-                        <!-- COL STARTS -->
-                        <div class="col-lg-4 col-md-6 mb-3">
-
-                            <p><i class="fa fa-building fa-1x mr-2 grey-text"></i>Mon - Fri 8:00-22:00</p>
-
-                        </div>
-                        <!-- COL ENDS -->
-
-                        <!-- COL STARTS -->
-                        <div class="col-lg-4 col-md-6 mb-3">
-
-                            <p><i class="fa fa-phone fa-1x mr-2 grey-text"></i>+91 1234567890</p>
-
-                        </div>
-                        <!-- COL ENDS -->
+                        <!--Grid column-->
 
                     </div>
-                    <!-- ROW ENDS -->
-                    
-                    <!--Google map-->
-                    <div id="map-container" class="z-depth-1-half map-container mb-5" style="height: 400px"></div>
+                    <!--Grid row-->
 
+                    <!--Grid row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="email" class="">Your message</label>
+                            <div class="md-form mb-0">
+                                <div id="message" class="md-textarea">
+                                    {{ contact_form.content }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                </form>
+
+                <div class="text-center text-md-left">
+                    <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
                 </div>
-                <!-- COL ENDS -->
+                <div class="status"></div>
+            </div>
+            <!--Grid column-->
 
-            </dv>
-            <!-- ROW ENDS -->
+            <!--Grid column-->
+            <div class="col-md-3 text-center">
+                <ul class="list-unstyled mb-0">
+                    <li><i class="fa fa-map-marker fa-2x"></i>
+                        <p>San Francisco, CA 94126, USA</p>
+                    </li>
 
-        </section>
-    <!-- /SECTION: CONTACT -->
+                    <li><i class="fa fa-phone mt-4 fa-2x"></i>
+                        <p>+ 01 234 567 89</p>
+                    </li>
+
+                    <li><i class="fa fa-envelope mt-4 fa-2x"></i>
+                        <p>contact@mdbootstrap.com</p>
+                    </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+
+        </div>
+
+    </section>
+    <!--Section: Contact v.2-->
 {% endblock content %}
