@@ -7,7 +7,8 @@ from .views import (
 	HomePageView,
 	search_results_view,
 	contact_view,
-	FlightCreateView
+	FlightCreateView,
+	FlightDeleteView
 )
 
 urlpatterns = [
