@@ -54,7 +54,10 @@ def contact_view(request):
 		if form.is_valid():
 			contact_name = request.POST.get('contact_name', '')
 			contact_email = request.POST.get('contact_email', '')
-			form_content = request.POST.get('content', '')
+			try:
+				form_content = request.POST.get('content', '')
+			except Exception as e:
+				pass
 
 			template = get_template('contact_template.txt')
 			context = {
@@ -73,7 +76,22 @@ def contact_view(request):
 				headers={'Reply-To': contact_email}
 			)
 
+			notify_template = get_template("contact_soon_template.txt")
+			notify_context = {
+				"flight_detail": "FLIGHT",
+				"content": form_content
+			}
+			notify_content = notify_template.render(notify_context)
+
+			contact_soon_email = EmailMessage(
+				"Django Flyways",
+				notify_content,
+				"Django Flyways Team",
+				[contact_email],
+			)
+
 			email.send()
+			contact_soon_email.send()
 			return render(request, 'contact_confirm.html', context)
 
 	return render(request, 'contact_form.html', {'contact_form': contact_form})
