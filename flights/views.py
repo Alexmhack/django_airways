@@ -19,16 +19,12 @@ class FlightListView(generic.ListView):
 	template_name = "flights/flights_list.html"
 	
 	def get_queryset(self):
-		return Flight.objects.filter(status__exact="a")
-		
+		return Flight.objects.filter(status__exact="a").order_by("departure")
 
-def flight_detail(request, id):
-	flight = Flight.objects.get(pk=id)
-	context = {
-		'flight': flight
-	}
 
-	return render(request, "flights/flight_detail.html", context)
+class FlightDetailView(generic.DetailView):
+	model = Flight
+	template_name = "flights/flight_detail.html"
 
 
 def search_results_view(request):
