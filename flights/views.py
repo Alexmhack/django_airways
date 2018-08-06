@@ -7,9 +7,12 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 
 from .models import Flight
 
-def home_page(request):
-	latest_flights = Flight.objects.filter(status__exact="a")[:6]
-	return render(request, "flights/home_page.html", context={'latest_flights': latest_flights})
+class HomePageView(generic.ListView):
+	model = Flight
+	template_name = "flights/home_page.html"
+
+	def get_queryset(self):
+		return Flight.objects.filter(status__exact="a")[:6]
 
 
 class FlightListView(generic.ListView):
@@ -51,3 +54,19 @@ def contact_view(request):
 			return render(request, "flights/contact_form_submit.html", {'error': error})
 	else:
 		return render(request, "flights/contact_form.html")
+
+
+# Flights CRUD
+class FlightCreateView(LoginRequiredMixin, CreateView):
+	model = Flight
+	fields = "__all__"
+
+
+class FlightUpdateView(LoginRequiredMixin, UpdateView):
+	model = Flight
+	fields = "__all__"
+
+
+class FlightDeleteView(LoginRequiredMixin, DeleteView):
+	model = Flight
+	success_url = reverse_lazy('flights_list')
