@@ -1,0 +1,46 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark danger-color">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="{% url 'admin-flights' %}">Flyways Admin</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'admin-flights' %}">Flights</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Passengers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'flight-create' %}">Create</a>
+            </li>
+            {% if flight_detail_view %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'flight-update' flight.pk %}">Update</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link">Delete Flight</a> -->
+                    <a class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="{% url 'flight-delete' flight.pk %}">Delete</a>
+                </li>
+            {% endif %}
+
+        </ul>
+        <!-- Links -->
+
+        <a class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="admin/logout/">Logout</a>
+
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
