@@ -17,9 +17,9 @@
 
 			<div class="col-md-4">
 				{% if flight.has_departed %}
-		        <a href="{% url 'contact_form' %}" class="red-text">
+		        	<a href="{% url 'contact_form' %}" class="red-text">
 				{% else %}
-				<a href="{% url 'flight_detail' flight.pk %}" class="green-text">
+					<a href="{{ flight.get_absolute_url }}" class="green-text">
 		    	{% endif %}
 					<div class="card border-success mb-5" style="max-width: 18rem;">
 					    <div class="card-header">₹ {{ flight.price }}</div>
