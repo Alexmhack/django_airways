@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Passengers Detail - {{ passenger.username }}
+{% endblock %}
+
+{% block content %}
+	
+	<div class="container mt-4">
+
+	{% if user.is_authenticated %}
+
+		<table class="table">
+		  <thead class="grey white-text">
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Name of passenger</th>
+		      <th scope="col">Email</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		
+		    <tr>
+		      <th scope="row">{{ forloop.counter }}</th>
+		      <td>
+		      	{{ passenger.passenger.first_name }}  {{ passenger.passenger.last_name }}
+		      </td>
+		      <td>{{ passenger.passenger.email }}</td>
+		      <td></td>
+		    </tr>
+
+		  </tbody>
+		
+		</table>
+
+	{% endif %}
+
+	</div>
+
+{% endblock content %}
