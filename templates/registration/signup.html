@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Signup
+{% endblock title %}
+
+{% block content %}
+	
+	<div class="container mt-4">
+
+		<!-- Default form register -->
+		<form class="text-center border border-light p-5">
+			{% csrf_token %}
+
+		    <p class="h4 mb-4">Sign up</p>
+
+		{% for field in form %}
+		    <div class="form-row mb-4">
+		    	{{ field.label_tag }}
+		        <div class="col">
+		            <!-- First name -->
+		            {{ field }}
+		        </div>
+		    </div>
+
+		    <!-- Social register -->
+		    <p>or sign up with:</p>
+
+		    <a type="button" class="light-blue-text mx-2">
+		        <i class="fa fa-facebook"></i>
+		    </a>
+		    <a type="button" class="light-blue-text mx-2">
+		        <i class="fa fa-twitter"></i>
+		    </a>
+		    <a type="button" class="light-blue-text mx-2">
+		        <i class="fa fa-linkedin"></i>
+		    </a>
+		    <a type="button" class="light-blue-text mx-2">
+		        <i class="fa fa-github"></i>
+		    </a>
+
+		    <hr>
+
+		    <!-- Terms of service -->
+		    <p>By clicking
+		        <em>Sign up</em> you agree to our
+		        <a href="" target="_blank">terms of service</a> and
+		        <a href="" target="_blank">terms of service</a>. </p>
+
+		</form>
+		<!-- Default form register -->
+
+	</div>
+
+{% endblock content %}
