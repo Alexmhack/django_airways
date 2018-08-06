@@ -14,17 +14,15 @@ class HomePageView(generic.ListView):
 	template_name = "flights/home_page.html"
 
 	def get_queryset(self):
-		return Flight.objects.filter(status__exact="a")[::-1]
+		return Flight.objects.filter(status__exact="a").filter(departure__gte=datetime.now())[:5]
 
 
 class FlightListView(generic.ListView):
 	model = Flight
-	paginate_by = 10
-
 	template_name = "flights/flights_list.html"
 	
 	def get_queryset(self):
-		return Flight.objects.filter(status__exact="a").order_by("departure")
+		return Flight.objects.filter(status__exact="a").order_by("-departure")
 
 
 class FlightDetailView(generic.DetailView):
@@ -32,7 +30,7 @@ class FlightDetailView(generic.DetailView):
 	template_name = "flights/flight_detail.html"
 
 	def get_queryset(self):
-		return Flight.objects.filter(departure__gte=datetime.now())
+		return Flight.objects.filter(status__exact="a").filter(departure__gte=datetime.now())
 
 
 def search_results_view(request):
