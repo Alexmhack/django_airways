@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
 	FlightListView,
 	FlightDetailView,
+	FlightUpdateView,
 	HomePageView,
 	search_results_view,
 	contact_view,
