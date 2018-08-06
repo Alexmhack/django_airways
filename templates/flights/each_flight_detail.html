@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Flights Detail
+{% endblock title %}
+
+{% block content %}
+	<!-- SECTION: FLIGHTS -->
+	<section class="container mt-5">
+		
+		<h3 class="orange-text text-left pl-3 mb-4">Flight Details</h3>
+		
+		<!-- ROW STARTS -->
+		<div class="row container">
+
+			<!-- COL STARTS -->
+			<div class="col-md-4 text-left">
+				<h4>From: <span class="green-text">{{ flight.origin|title }}</span></h4>
+			</div>
+			<!-- COL ENDS -->
+
+			<!-- COL STARTS -->
+			<div class="col-md-4 text-left">
+				<h4>To: <span class="green-text">{{ flight.destination|title }}</span></h4>
+			</div>
+			<!-- COL ENDS -->
+
+			<!-- COL STARTS -->
+			<div class="col-md-4 text-left">
+				<h4>Duration: <span class="grey-text">{{ flight.duration }}<span></h4>
+			</div>
+			<!-- COL ENDS -->
+
+			<!-- ROW STARTS -->
+			<div class="row container mt-3">
+
+				<!-- COL STARTS -->
+				<div class="col-md-12 mb-3 text-left">
+					<h4>Departure from {{ flight.origin }}: <span class="blue-text">{{ flight.departure_format }}</span></h4>
+				</div>
+				<!-- COL ENDS -->
+
+				<!-- COL STARTS -->
+				<div class="col-md-12 text-left">
+					<h4>Estimated arrival in {{ flight.destination }} <span class="red-text">{{ flight.get_arrival_time }}</span></h4>
+				</div>
+				<!-- COL ENDS -->
+
+			</div>
+			<!-- ROW ENDS -->
+
+		</div>
+		<!-- ROW ENDS -->
+
+	</section>
+	<!-- /SECTION: FLIGHTS -->
+{% endblock content %}
