@@ -9,7 +9,6 @@ class Flight(models.Model):
 	destination = models.CharField(max_length=50)
 	price = models.DecimalField(decimal_places=2, max_digits=10000)
 	departure = models.DateTimeField(default=current_time + timedelta(hours=2))
-	departed = models.BooleanField(default=False)
 	duration = models.DurationField(
 		help_text="Duration for flight in hh:mm:ss format"
 	)
@@ -30,7 +29,6 @@ class Flight(models.Model):
 	@property
 	def has_departed(self):
 		if self.departure < current_time.now():
-			self.departed = True
 			return True
 		return False
 
