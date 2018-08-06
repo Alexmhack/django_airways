@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Contact
+{% endblock title %}
+
+{% block content %}
+	<!-- SECTION: CONTACT -->
+        <section id="contact">
+
+            <!-- HEADING -->
+            <h2 class="font-weight-bold text-cetner mb-5">Contact us</h2>
+
+            <!-- ROW STARTS -->
+            <dv class="row">
+                
+                <!-- COL STARTS -->
+                <div class="col-lg-5 col-md-12">
+
+                      <!-- Form contact -->
+                      <form class="p-5" method="post" action="" role="form">
+                        {% csrf_token %}
+                        <div class="md-form form-sm"> <i class="fa fa-user prefix grey-text"></i>
+                          
+                          <label for="form3">{{ contact_form.contact_name }}</label>
+                        </div>
+                        <div class="md-form form-sm"> <i class="fa fa-envelope prefix grey-text"></i>
+                          
+                          <label for="form2">{{ contact_form.contact_email }}</label>
+                        </div>
+                        <div class="md-form form-sm"> <i class="fa fa-pencil prefix grey-text"></i>
+                          
+                          <label for="form8">{{ contact_form.content }}</label>
+                        </div>
+                        <div class="text-center mt-4">
+                          <button class="btn btn-primary">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                      </form>
+                      <!-- Form contact -->
+
+                </div>
+                <!-- COL ENDS -->
+
+                <!-- COL STARTS -->
+                <div class="col-lg-7 col-md-12">
+
+                    <!-- ROW STARTS -->
+                    <div class="row text-center">
+
+                        <!-- COL STARTS -->
+                        <div class="col-lg-4 col-md-12 mb-3">
+
+                            <p><i class="fa fa-map fa-1x mr-2 grey-text"></i>Mumbai, Maharashtra 400047</p>
+
+                        </div>
+                        <!-- COL ENDS -->
+
+                        <!-- COL STARTS -->
+                        <div class="col-lg-4 col-md-6 mb-3">
+
+                            <p><i class="fa fa-building fa-1x mr-2 grey-text"></i>Mon - Fri 8:00-22:00</p>
+
+                        </div>
+                        <!-- COL ENDS -->
+
+                        <!-- COL STARTS -->
+                        <div class="col-lg-4 col-md-6 mb-3">
+
+                            <p><i class="fa fa-phone fa-1x mr-2 grey-text"></i>+91 1234567890</p>
+
+                        </div>
+                        <!-- COL ENDS -->
+
+                    </div>
+                    <!-- ROW ENDS -->
+                    
+                    <!--Google map-->
+                    <div id="map-container" class="z-depth-1-half map-container mb-5" style="height: 400px"></div>
+
+                </div>
+                <!-- COL ENDS -->
+
+            </dv>
+            <!-- ROW ENDS -->
+
+        </section>
+    <!-- /SECTION: CONTACT -->
+{% endblock content %}
