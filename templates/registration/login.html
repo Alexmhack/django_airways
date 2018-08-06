@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+    
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <!-- Default form login -->
+        <form class="text-center border border-light p-5" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <p class="h4 mb-4">Sign in</p>
+
+            <!-- Email -->
+            <!-- <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"> -->
+            <div class="text-left">{{ form.username.label_tag }}</div>
+            {{ form.username }}
+            <div class="mb-4"></div>
+
+            <!-- Password -->
+            <div class="text-left">{{ form.password.label_tag }}</div>
+            {{ form.password }}
+            <div class="mb-4"></div>
+
+            <div class="d-flex justify-content-around">
+                <div>
+                    <!-- Forgot password -->
+                    <a href="{% url 'password_reset' %}">Lost password?</a>
+                </div>
+            </div>
+
+            <!-- Sign in button -->
+            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+
+            <!-- Register -->
+            <p>Not a member?
+                <a href="">Register</a>
+            </p>
+
+            <!-- Social login -->
+            <p>or sign in with:</p>
+
+            <a type="button" href="https://facebook.com" class="light-blue-text mx-2">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a type="button" href="https://twitter.com" class="light-blue-text mx-2">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a type="button" href="https://linkedin.com" class="light-blue-text mx-2">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a type="button" href="https://github.com" class="light-blue-text mx-2">
+                <i class="fa fa-github"></i>
+            </a>
+
+        </form>
+        <!-- Default form login -->
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+{% endblock %}
