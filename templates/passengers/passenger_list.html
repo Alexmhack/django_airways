@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Passengers List
+{% endblock %}
+
+{% block content %}
+	
+	{% if user.is_authenticated %}
+	<ul>
+		{% for passenger in passenger_list %}
+		<li>{{ passenger }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+{% endblock content %}
