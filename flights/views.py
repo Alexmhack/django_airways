@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 
 from .models import Flight
 
@@ -7,14 +12,15 @@ def home_page(request):
 	return render(request, "flights/home_page.html", context={'latest_flights': latest_flights})
 
 
-def flights_list(request):
-	flights_list = Flight.objects.filter(status__exact="a")
-	context = {
-		'flights_list': flights_list,
-	}
-	
-	return render(request, 'flights/flights_list.html', context)
+class FlightListView(generic.ListView):
+	model = Flight
+	paginate_by = 10
 
+	template_name = "flights/flights_list.html"
+	
+	def get_queryset(self):
+		return Flight.objects.filter(status__exact="a")
+		
 
 def flight_detail(request, id):
 	flight = Flight.objects.get(pk=id)
