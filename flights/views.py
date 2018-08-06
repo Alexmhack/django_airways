@@ -7,12 +7,14 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 
 from .models import Flight
 
+from datetime import datetime
+
 class HomePageView(generic.ListView):
 	model = Flight
 	template_name = "flights/home_page.html"
 
 	def get_queryset(self):
-		return Flight.objects.filter(status__exact="a")[:6]
+		return Flight.objects.filter(status__exact="a")[::-1]
 
 
 class FlightListView(generic.ListView):
@@ -28,6 +30,9 @@ class FlightListView(generic.ListView):
 class FlightDetailView(generic.DetailView):
 	model = Flight
 	template_name = "flights/flight_detail.html"
+
+	def get_queryset(self):
+		return Flight.objects.filter(departure__gte=datetime.now())
 
 
 def search_results_view(request):
