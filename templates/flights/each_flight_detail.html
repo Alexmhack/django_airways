@@ -8,7 +8,13 @@
 	<!-- SECTION: FLIGHTS -->
 	<section class="container mt-5">
 		
-		<h3 class="orange-text text-left pl-3 mb-4">Flight Details</h3>
+		<h3 class="red-text text-left pl-3 mb-4">
+			{% if flight.has_departed %}
+				Flight has been departed
+			{% else %}
+				Flight is available
+			{% endif %}
+		</h3>
 		
 		<!-- ROW STARTS -->
 		<div class="row container">
@@ -41,23 +47,19 @@
 				<!-- COL ENDS -->
 
 				<!-- COL STARTS -->
-				<div class="col-md-12 text-left">
+				<div class="col-md-12 mb-3 text-left">
 					<h4>Estimated arrival in {{ flight.destination }} <span class="red-text">{{ flight.get_arrival_time }}</span></h4>
 				</div>
 				<!-- COL ENDS -->
 
-			</div>
-			<!-- ROW ENDS -->
-
-			<!-- row starts -->
-			<div class="row">
-
-				<div class="col-md-6">
+				<!-- col starts -->
+				<div class="col-md-6 mb-3 text-left">
 					<h4><a href="#">Flight Passengers</a></h4>
 				</div>
+				<!-- col ends -->
 
 			</div>
-			<!-- row ends -->
+			<!-- ROW ENDS -->
 
 		</div>
 		<!-- ROW ENDS -->
