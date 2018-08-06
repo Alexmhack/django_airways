@@ -19,11 +19,16 @@
                 <a class="nav-link active" href="{% url 'admin-flights' %}">Flights</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Passengers</a>
+                <a class="nav-link" href="{% url 'passenger-list' %}">Passengers</a>
             </li>
         {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'flight-create' %}">Create</a>
+                {% if passenger_detail_view %}
+                    <a class="nav-link" href="{% url 'passenger-create' %}">Create</a>
+                {% elif flight_detail_view %}
+                    <a class="nav-link" href="{% url 'flight-create' %}">Create</a>
+                {% endif %}
+
             </li>
             {% if flight_detail_view %}
                 <li class="nav-item">
@@ -32,6 +37,14 @@
                 <li class="nav-item">
                     <!-- <a class="nav-link">Delete Flight</a> -->
                     <a class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="{% url 'flight-delete' flight.pk %}">Delete</a>
+                </li>
+            {% elif passenger_detail_view %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'passenger-update' passenger.passenger.pk %}">Update</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link">Delete Flight</a> -->
+                    <a class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="{% url 'passenger-delete' passenger.passenger.pk %}">Delete</a>
                 </li>
             {% endif %}
         {% endif %}
