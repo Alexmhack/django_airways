@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
+from django.urls import reverse, reverse_lazy
 
 from .models import Passenger
 
@@ -25,14 +25,14 @@ class PassengerDetailView(LoginRequiredMixin, generic.DetailView):
 # CRUD
 class PassengerCreateView(LoginRequiredMixin, CreateView):
 	model = Passenger
-	template_name = "passengers/passenger_create.html"
+	fields = "__all__"
 
 
 class PassengerUpdateView(LoginRequiredMixin, UpdateView):
 	model = Passenger
-	template_name = "passengers/passenger_update.html"
+	fields = "__all__"
 
 
 class PassengerDeleteView(LoginRequiredMixin, DeleteView):
 	model = Passenger
-	success_url = redirect("passenger-list")
+	success_url = reverse_lazy("passenger-list")
