@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Create Passenger
+{% endblock title %}
+
+{% block content %}
+
+	<div class="container mt-5">
+		
+		<form action="" method="post" accept-charset="utf-8">
+			{% csrf_token %}
+			<table class="mb-3 table">
+				{{ form }}
+			</table>
+			<input type='submit' value='Submit'>
+		</form>
+
+{% endblock content %}
