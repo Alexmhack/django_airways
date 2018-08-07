@@ -90,6 +90,10 @@ def activation(request, uidb64, token):
 		user.profile.email_confirmed = True
 		user.save()
 		login(request, user)
-		return redirect('home')
+		return redirect('account_activation_sent')
 	else:
 		return render(request, 'account_activation_invalid.html')
+
+
+def account_activation_sent(request):
+	render(request, "registration/account_activation_sent.html")
