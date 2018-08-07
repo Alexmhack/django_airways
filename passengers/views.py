@@ -66,7 +66,7 @@ def signup_view(request):
 				"domain": current_site.domain,
 				"uid": urlsafe_base64_encode(force_bytes(user.pk)),
 				"token": account_activation_token.make_token(user)
-				})
+			})
 
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password1')
