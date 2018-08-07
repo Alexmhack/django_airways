@@ -101,7 +101,6 @@ def contact_view(request):
 class FlightCreateView(LoginRequiredMixin, CreateView):
 	model = Flight
 	fields = "__all__"
-	success_url = reverse("admin-flight-details", args=[str(self.id)])
 
 
 class FlightUpdateView(LoginRequiredMixin, UpdateView):
