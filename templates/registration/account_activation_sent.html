@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Sign in / Sign up
+{% endblock %}
+
+{% block content %}
+		
+	<div class="container">
+
+		<h1 class="orange-text">Django Flyways</h1>
+		<p>
+			<a href="{% url 'login' %}" class="green-text">Log in</a>
+
+			<a href="{% url 'signup' %}" class="green-text">Sign in</a>
+		</p>		
+
+	</div>
+
+{% endblock content %}
