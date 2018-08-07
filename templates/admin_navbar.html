@@ -23,9 +23,9 @@
             </li>
         {% if user.is_authenticated %}
             <li class="nav-item">
-                {% if passenger_detail_view %}
+                {% if passenger_detail_view or passenger_list_view %}
                     <a class="nav-link" href="{% url 'passenger-create' %}">Create</a>
-                {% elif flight_detail_view %}
+                {% elif flight_detail_view or flight_list_view %}
                     <a class="nav-link" href="{% url 'flight-create' %}">Create</a>
                 {% endif %}
 
