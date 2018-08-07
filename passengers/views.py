@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 
 from .models import Passenger
+from . forms import SignupForm
 
 class PassengerList(LoginRequiredMixin, generic.ListView):
 	model = Passenger
@@ -47,7 +48,7 @@ class PassengerDeleteView(LoginRequiredMixin, DeleteView):
 
 def signup_view(request):
 	if request.method == "POST":
-		form = UserCreationForm(request.POST)
+		form = SignupForm(request.POST)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
@@ -56,5 +57,5 @@ def signup_view(request):
 			login(request, user)
 			return redirect("flights_list")
 	else:
-		form = UserCreationForm()
+		form = SignupForm()
 	return render(request, "registration/signup.html", {'form': form})
