@@ -6,50 +6,70 @@
 
 {% block content %}
 	
-	<div class="container mt-4">
+<div class="container mt-4">
 
-		<!-- Default form register -->
-		<form class="text-center border border-light p-5">
-			{% csrf_token %}
+	<div class="row">
 
-		    <p class="h4 mb-4">Sign up</p>
+		<div class="col-md-3"></div>
 
-		{% for field in form %}
-		    <div class="form-row mb-4">
-		    	{{ field.label_tag }}
-		        <div class="col">
-		            <!-- First name -->
-		            {{ field }}
-		        </div>
-		    </div>
+		<div class="col-md-6">
+			<!-- Default form register -->
+			<form class="text-center border border-light p-5">
+				{% csrf_token %}
 
-		    <!-- Social register -->
-		    <p>or sign up with:</p>
+			    <p class="h4 mb-4">Sign up</p>
 
-		    <a type="button" class="light-blue-text mx-2">
-		        <i class="fa fa-facebook"></i>
-		    </a>
-		    <a type="button" class="light-blue-text mx-2">
-		        <i class="fa fa-twitter"></i>
-		    </a>
-		    <a type="button" class="light-blue-text mx-2">
-		        <i class="fa fa-linkedin"></i>
-		    </a>
-		    <a type="button" class="light-blue-text mx-2">
-		        <i class="fa fa-github"></i>
-		    </a>
+			{% for field in form %}
+			    <div class="form-row mb-2">
+			    	<p>{{ field.label_tag }}</p>
+			        <div class="col">
+			            <!-- First name -->
+			            {{ field }}
+			            {% if field.help_text %}
+				          <small class="text-grey">{{ field.help_text }}</small>
+				        {% endif %}
+				        {% for error in field.errors %}
+				          <p class="text-danger">{{ error }}</p>
+				        {% endfor %}
+			        </div>
+			    </div>
+			{% endfor %}
 
-		    <hr>
+				<button class="btn btn-info my-4 btn-block" type="submit">Sign up</button>
 
-		    <!-- Terms of service -->
-		    <p>By clicking
-		        <em>Sign up</em> you agree to our
-		        <a href="" target="_blank">terms of service</a> and
-		        <a href="" target="_blank">terms of service</a>. </p>
+			    <!-- Social register -->
+			    <p>or sign up with:</p>
 
-		</form>
-		<!-- Default form register -->
+			    <a type="button" class="light-blue-text mx-2">
+			        <i class="fa fa-facebook"></i>
+			    </a>
+			    <a type="button" class="light-blue-text mx-2">
+			        <i class="fa fa-twitter"></i>
+			    </a>
+			    <a type="button" class="light-blue-text mx-2">
+			        <i class="fa fa-linkedin"></i>
+			    </a>
+			    <a type="button" class="light-blue-text mx-2">
+			        <i class="fa fa-github"></i>
+			    </a>
+
+			    <hr>
+
+			    <!-- Terms of service -->
+			    <p>By clicking
+			        <em>Sign up</em> you agree to our
+			        <a href="" target="_blank">terms of service</a> and
+			        <a href="" target="_blank">terms of service</a>. </p>
+
+			</form>
+			<!-- Default form register -->
+
+		<div class="col-md-3"></div>
+
+		</div>
 
 	</div>
+
+</div>
 
 {% endblock content %}
