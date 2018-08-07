@@ -25,7 +25,7 @@
 		    <tr>
 		      <th scope="row">{{ forloop.counter }}</th>
 		      <td>
-		      	{{ passenger.passenger.first_name }}  {{ passenger.passenger.last_name }}
+		      	{{ passenger.passenger.first_name|title }}  {{ passenger.passenger.last_name|title }}
 		      </td>
 		      <td>{{ passenger.passenger.email }}</td>
 		      <td></td>
