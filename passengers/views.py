@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
@@ -47,14 +47,14 @@ class PassengerDeleteView(LoginRequiredMixin, DeleteView):
 
 def signup_view(request):
 	if request.method == "POST":
-		form = UserCreationForm(data=request.POST)
+		form = UserCreationForm(request.POST)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password1')
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
-			return reverse_lazy("admin-flights")
+			return redirect("flights_list")
 	else:
 		form = UserCreationForm()
 	return render(request, "registration/signup.html", {'form': form})
