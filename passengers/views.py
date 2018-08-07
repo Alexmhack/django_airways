@@ -13,6 +13,11 @@ class PassengerList(LoginRequiredMixin, generic.ListView):
 	model = Passenger
 	template_name = "passengers/passenger_list.html"
 
+	def get_context_data(self, **kwargs):
+		context = super(PassengerList, self).get_context_data(**kwargs)
+		context['passenger_list_view'] = "True"
+		return context
+
 
 class PassengerDetailView(LoginRequiredMixin, generic.DetailView):
 	model = Passenger
@@ -42,14 +47,14 @@ class PassengerDeleteView(LoginRequiredMixin, DeleteView):
 
 def signup_view(request):
 	if request.method == "POST":
-		form = UserCreationForm(request.POST)
+		form = UserCreationForm(data=request.POST)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
-			raw_password = form.cleaned_data.get('password')
+			raw_password = form.cleaned_data.get('password1')
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
-			return redirect("admin-flights")
+			return reverse_lazy("admin-flights")
 	else:
 		form = UserCreationForm()
 	return render(request, "registration/signup.html", {'form': form})
