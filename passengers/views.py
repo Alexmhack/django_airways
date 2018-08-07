@@ -70,7 +70,7 @@ def signup_view(request):
 
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password1')
-			user = authenticate(username=username, password=raw_password)
+			user = authenticate(request, username=username, password=raw_password)
 			login(request, user)
 			return redirect("account_activation_sent")
 	else:
