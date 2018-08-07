@@ -72,7 +72,7 @@ def signup_view(request):
 			raw_password = form.cleaned_data.get('password1')
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
-			return redirect("flights_list")
+			return redirect("account_activation_sent")
 	else:
 		form = SignupForm()
 	return render(request, "registration/signup.html", {'form': form})
@@ -90,7 +90,7 @@ def activation(request, uidb64, token):
 		user.profile.email_confirmed = True
 		user.save()
 		login(request, user)
-		return redirect('account_activation_sent')
+		return redirect('flights_list')
 	else:
 		return render(request, 'account_activation_invalid.html')
 
