@@ -6,9 +6,14 @@ from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
 
 from .models import Passenger
 from . forms import SignupForm
+from flights.core.tokens import account_activation_token
 
 class PassengerList(LoginRequiredMixin, generic.ListView):
 	model = Passenger
@@ -50,7 +55,19 @@ def signup_view(request):
 	if request.method == "POST":
 		form = SignupForm(request.POST)
 		if form.is_valid():
-			form.save()
+			user = form.save(commit=False)
+			user.is_active = False
+			user.save()
+			current_site = get_current_site(request)
+
+			subject = "Activate your Django Flyways account"
+			message = render_to_string('account_activation_email.html', {
+				"user": user,
+				"domain": current_site.domain,
+				"uid": urlsafe_base64_encode(force_bytes(user.pk)),
+				"token": account_activation_token.make_token(user)
+				})
+
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password1')
 			user = authenticate(username=username, password=raw_password)
