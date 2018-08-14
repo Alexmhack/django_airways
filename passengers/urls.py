@@ -26,5 +26,5 @@ urlpatterns += [
 
 urlpatterns += [
 	path('account/activation/sent/', core_views.account_activation_sent, name="account_activation_sent"),
-	path('accounts/reset/<uidb64>/<token>/', core_views.activate, name="activate"),
+	path('accounts/activation/<uidb64>/<token>/', core_views.activate, name="activate"),
 ]
