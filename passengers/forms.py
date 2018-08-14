@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 class SignupForm(UserCreationForm):
 	first_name = forms.CharField(max_length=20, required=True, help_text="Enter your first name")
@@ -40,4 +41,4 @@ class SignupForm(UserCreationForm):
 			self.cleaned_data['email'],
 			self.cleaned_data['password1']
 		)
-		return use
+		return user
