@@ -10,4 +10,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         print(options)
-        return Flight.objects.refresh_departure_time(items=options['flights'])
+        return Flight.objects.refresh_departure_time(flights=options['flights'])
