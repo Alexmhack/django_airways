@@ -5,6 +5,21 @@ from django.contrib.auth.models import User
 
 current_time = datetime.now()
 
+class FlightModelManager(models.Manager):
+	def refresh_departure_time(self, flights=None):
+		qs = Flight.objects.filter(id__gte=1)
+		if flights is not None and isinstance(flights, int):
+			qs = qs.order_by('-id')[:flights]
+		new_time = current_time + timedelta(hours=5)
+		objects_refreshed = 0
+		for q in qs:
+			q.departure = new_time
+			print(q.id, q.departure)
+			q.save()
+			objects_refreshed += 1
+		return f"New Time: {new_time} For: {objects_refreshed} flights"
+
+
 class Flight(models.Model):
 	origin = models.CharField(max_length=50)
 	destination = models.CharField(max_length=50)
@@ -23,6 +38,8 @@ class Flight(models.Model):
 	)
 
 	status = models.CharField(max_length=1, choices=FLIGHT_STATUS, default='a', help_text="Flight Availability")
+
+	objects = FlightModelManager()
 
 	def __str__(self):
 		return f"Flight: {self.origin} to {self.destination}"
