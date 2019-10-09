@@ -10,5 +10,3 @@ dashboard with real time updating information using AJAX.
 # Build and Test
 1. create project in the git repo with django-admin startproject command
 2. run server and commit the changes
-
-For the complete tutorial for this django webapp fill the contact form at [codementor.tk](http://www.codementor.tk). Will contact soon...
